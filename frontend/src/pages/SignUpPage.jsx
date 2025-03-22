@@ -44,13 +44,9 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2 bg-gradient-to-br from-base-100 to-base-200">
+    <div className="pt-10 min-h-screen grid lg:grid-cols-2 bg-gradient-to-br from-base-100 to-base-200">
       {/* Left side */}
       <div className="flex items-center justify-center p-6 sm:p-12 relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-32 bg-primary/5 rounded-br-full" />
-        <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 rounded-tl-full" />
-
         <div className="w-full max-w-md space-y-8 bg-base-100 p-8 rounded-2xl shadow-lg relative z-10">
           {/* Logo */}
           <div className="flex flex-col items-center gap-2">
