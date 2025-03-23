@@ -6,10 +6,10 @@ const AuthImagePattern = ({ title, subtitle }) => {
   
   // Colors for the grid tiles
   const colors = [
-    'bg-purple-400/20', 
-    'bg-indigo-400/20', 
-    'bg-violet-400/20', 
-    'bg-fuchsia-400/20'
+    'bg-primary/70', 
+    'bg-secondary/30', 
+    'bg-accent/30', 
+    'bg-secondary/50'
   ];
   
   // Update animation phase every 3 seconds
@@ -55,7 +55,7 @@ const AuthImagePattern = ({ title, subtitle }) => {
           })}
         </div>
         
-        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">{title}</h2>
+        <h2 className="text-2xl font-bold mb-4 bg-linear-to-r from-purple-400 to-indigo-500 bg-clip-text text-transparent">{title}</h2>
         <p className="text-base-content/70 leading-relaxed">{subtitle}</p>
       </div>
     </div>

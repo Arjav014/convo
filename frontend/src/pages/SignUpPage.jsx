@@ -44,16 +44,16 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="pt-10 min-h-screen grid lg:grid-cols-2 bg-gradient-to-br from-base-100 to-base-200">
+    <div className="pt-10 min-h-screen grid lg:grid-cols-2 bg-linear-to-br from-base-100 to-base-200">
       {/* Left side */}
       <div className="flex items-center justify-center p-6 sm:p-12 relative">
         <div className="w-full max-w-md space-y-8 bg-base-100 p-8 rounded-2xl shadow-lg relative z-10">
           {/* Logo */}
           <div className="flex flex-col items-center gap-2">
-            <div className="size-16 rounded-2xl bg-gradient-to-br from-primary/20 to-purple-400/20 flex items-center justify-center shadow-md">
+            <div className="size-16 rounded-2xl bg-linear-to-br from-primary/20 to-purple-400/20 flex items-center justify-center shadow-md">
               <MessagesSquare className="size-8 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold mt-3 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold mt-3 bg-linear-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Create Account
             </h1>
             <p className="text-base-content/60 max-w-xs text-center">
@@ -140,7 +140,7 @@ const SignUpPage = () => {
             {/* Submit */}
             <button
               type="submit"
-              className="btn btn-primary w-full py-3 bg-gradient-to-r from-primary to-purple-600 hover:opacity-90 transition-all transform hover:-translate-y-0.5 shadow-md"
+              className="btn btn-primary w-full py-3 bg-linear-to-r from-primary to-purple-600 hover:opacity-90 transition-all transform hover:-translate-y-0.5 shadow-md"
               disabled={isSigningUp}
             >
               {isSigningUp ? (
