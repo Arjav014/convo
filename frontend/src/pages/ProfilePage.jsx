@@ -13,7 +13,7 @@ const ProfilePage = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    if(file.size > MAX_SIZE){
+    if (file.size > MAX_SIZE) {
       toast.error("File size must be less than 2MB");
     }
 
@@ -34,7 +34,9 @@ const ProfilePage = () => {
           {/* Header */}
           <div className="bg-primary/10 p-6 text-center">
             <h1 className="text-2xl font-bold text-primary">Profile</h1>
-            <p className="mt-1 text-base-content/70">Your personal information</p>
+            <p className="mt-1 text-base-content/70">
+              Your personal information
+            </p>
           </div>
 
           {/* Content */}
@@ -56,7 +58,11 @@ const ProfilePage = () => {
                     bg-primary hover:bg-primary-focus
                     p-2 rounded-full cursor-pointer 
                     transition-all duration-200 shadow-md
-                    ${isUpdatingProfile ? "animate-pulse pointer-events-none opacity-70" : ""}
+                    ${
+                      isUpdatingProfile
+                        ? "animate-pulse pointer-events-none opacity-70"
+                        : ""
+                    }
                   `}
                 >
                   <Camera className="w-5 h-5 text-primary-content" />
@@ -112,7 +118,9 @@ const ProfilePage = () => {
                     <Calendar className="w-4 h-4 text-secondary" />
                     Member Since
                   </span>
-                  <span className="font-medium">{authUser.createdAt?.split("T")[0]}</span>
+                  <span className="font-medium">
+                    {authUser.createdAt?.split("T")[0]}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between py-3">
                   <span className="flex items-center gap-2">
