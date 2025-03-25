@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { axiosInstance } from "../lib/axios";
 import { useAuthStore } from "./useAuthStore";
 
-export const useChatStore = create((set) => ({
+export const useChatStore = create((set, get) => ({
   messages: [],
   users: [],
   selectedUser: null,
@@ -25,12 +25,32 @@ export const useChatStore = create((set) => ({
   getMessages: async (userId) => {
     set({ isMessagesLoading: true });
     try {
-        const res = await axiosInstance.get(`/messages/${userId}`);
-        set({ messages: res.data });
+      const res = await axiosInstance.get(`/messages/${userId}`);
+      set({ messages: res.data });
     } catch(error){
-        toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
     } finally {
       set({ isMessagesLoading: false });
+    }
+  },
+
+  sendMessage: async (messageData) => {
+    const { selectedUser, messages } = get();
+    try {
+      // Change to await the axios post
+      const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData);
+      
+      // Ensure the new message has all required properties
+      const newMessage = {
+        ...res.data,
+        senderId: res.data.senderId || useAuthStore.getState().authUser._id
+      };
+      
+      set({ messages: [...messages, newMessage] });
+      return newMessage;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      throw error;
     }
   },
 
@@ -40,9 +60,15 @@ export const useChatStore = create((set) => ({
 
     const socket = useAuthStore.getState().socket;
     
-    // todo: optimize this one later
     socket.on("newMessage", (newMessage) => {
-      set({ messages: [...get().messages, newMessage] });
+      if(newMessage.senderId !== selectedUser._id) return;
+
+      const processedMessage = {
+        ...newMessage,
+        senderId: newMessage.senderId || useAuthStore.getState().authUser._id
+      };
+      
+      set({ messages: [...get().messages, processedMessage] });
     });
   },
 
@@ -51,6 +77,5 @@ export const useChatStore = create((set) => ({
     socket.off("newMessage");
   },
 
-  // todo: optimize this one later
   setSelectedUser: (selectedUser) => set({ selectedUser }),
 }));
